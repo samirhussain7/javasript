@@ -120,6 +120,7 @@ select {
 .box {
     width: 260px;
     min-height: 300px;
+    max-height: 310px;
     box-shadow: 0 0 20px var(--shadow);
     background-color: var(--box-bg-color);
     border-radius: 4px;
