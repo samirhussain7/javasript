@@ -1,7 +1,7 @@
 
 :root {
-    --theme-bg-color: rgb(242, 242, 242);
-    --text-color: #000;
+    --theme-bg-color: hsl(0, 0%, 99%);
+    --text-color: hsl(200, 15%, 8%);
     --box-bg-color: rgb(248, 248, 248);
     --shadow: #dfdddd;
 }
@@ -14,52 +14,34 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     color: var(--text-color);
     background-color: var(--theme-bg-color);
     transition: all 0.4s ease-in-out;
 }
 
 .dark {
-    --text-color: #fff;
-    --box-bg-color: rgb(28, 51, 82);
-    --theme-bg-color: rgb(11, 33, 60);
+    --text-color: hsl(0, 100%, 100%);
+    --box-bg-color: hsl(209, 23%, 22%);
+    --theme-bg-color: hsl(207, 26%, 17%);
     --shadow: rgb(13, 37, 67);
 }
 .theme {
-    color: #fff;
-    font-weight: 600;
+    color: var(--text-color);
+    /* font-weight: 500; */
     font-size: 14px;
+    background-color: transparent;
     border-radius: 4px;
-    background-color: rgb(66, 66, 247);
     padding: 8px 23px;
-    position: relative;
-    overflow: hidden;
     cursor: pointer;
-    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
-}
-.theme::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right bottom, rgb(66, 66, 247), rgba(255, 255, 255, 0.377) 60%, rgb(66, 66, 247));
-    transition: all 0.25s ease-in-out;
+    transition: all 0.2s ease;
 }
 
-.theme:hover::after {
-    left: 100%;
-}
 .theme:hover {
     transform: scale(1.08);
 }
-.theme:active {
-    transform: scale(0.94);
-}
 main {
-    min-width: 400px;
+    min-width: 350px;
 }
 header {
     box-shadow: 0 0px 10px var(--shadow);
@@ -75,8 +57,8 @@ nav {
     align-items: center;
     justify-content: space-between;
 }
-.nav h2 {
-    font-size: 2vw;
+nav h2 {
+    font-size: clamp(18px, 5vw, 26px);
 }
 .search-filter {
     width: 100%;
@@ -119,8 +101,7 @@ select {
 }
 .box {
     width: 260px;
-    min-height: 300px;
-    max-height: 310px;
+    height: 300px;
     box-shadow: 0 0 20px var(--shadow);
     background-color: var(--box-bg-color);
     border-radius: 4px;
