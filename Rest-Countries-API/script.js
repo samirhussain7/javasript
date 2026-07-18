@@ -1,7 +1,7 @@
 import themeChanger from "./theme.js";
 themeChanger();
 
-async function apiData() {
+async function getCountries() {
   const res = await fetch("./data.json");
   const result = await res.json();
 
@@ -13,7 +13,7 @@ async function apiData() {
     let population = country.population.toLocaleString("en-IN");
 
     box.innerHTML = `
-            <a href="./page2/info.html"><img src=${country.flag} alt=${country.name}></a>
+            <a href="page2/info.html?name=${country.name}"><img src=${country.flag} alt="${country.name} flag"></a>
             <h4>${country.name}</h4>
             <p class="population">Population: ${population}</p>
             <p class="region">Region: <span class="region-value">${country.region}<span/></p>
@@ -22,7 +22,7 @@ async function apiData() {
     container.appendChild(box);
   });
 }
-apiData();
+getCountries();
 
 function searchingFilterdCountry() {
   const input = document.querySelector("input");
