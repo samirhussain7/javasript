@@ -1,83 +1,350 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <title>Frontend Mentor | Weather app</title>
-  <link rel="stylesheet" href="./css/output.css">
-  <script src="./js/script.js" defer></script>
-</head>
-<body class="bg-[hsl(243,96%,9%)] text-white">
-  <main class="w-full px-4 pb-12 max-w-[1440px] min-h-screen mx-auto lg:p-0">
-
-    <nav class="py-5 flex justify-between items-center">
-      <!-- Logo -->
-      <div>
-        <img class="w-44" src="./assets/images/logo.svg" alt="Logo">
-      </div>
-      <!-- Units Dropdown -->
-      <div class="flex gap-1.5 items-center justify-center bg-gray-700 px-3 py-2 rounded">
-        <img src="./assets/images/icon-units.svg" alt="Setting Svg">
-        <h3 class="font-bold">Units</h3>
-        <img src="./assets/images/icon-dropdown.svg" alt="Dropdown Svg">
-      </div>
-
-    </nav>
-
-    <h1 class="text-6xl font-bold text-center my-10">How's the sky looking today?</h1>
-
-    <!-- SECTION-1 -->
-     <section>
-      <!-- Searching container -->
-       <form class="flex flex-col gap-3 my-10">
-        <input class="w-full px-4 py-3 rounded-md bg-gray-700" type="text" placeholder="Seach for a place...">
-        <button class="w-full px-4 py-3 rounded-md text-center font-semibold bg-blue-500 active:scale-95 cursor-pointer duration-150">Search</button>
-       </form>
-
-       <!-- Grid Section -->
-        <div class="h-[70svh] grid grid-cols-2 grid-rows-4 gap-4">
-          <div class="row-start-1 row-end-3 col-start-1 col-end-3 bg-blue-500 rounded-2xl"></div>
-          <div class="w-full h-full bg-yellow-800 rounded-xl"></div>
-          <div class="w-full h-full bg-yellow-800 rounded-xl"></div>
-          <div class="w-full h-full bg-yellow-800 rounded-xl"></div>
-          <div class="w-full h-full bg-yellow-800 rounded-xl"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Weather app</title>
+    <link rel="stylesheet" href="./css/output.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" defer></script>
+    <script src="./js/script.js" type="module" defer></script>
+  </head>
+  <body class="bg-[hsl(243,96%,9%)] text-white">
+    <main
+      class="w-full p-10 pt-0 max-w-[1340px] min-w-[404px] min-h-screen mx-auto lg:p-0"
+    >
+      <nav class="py-5 flex justify-between items-center">
+        <!-- Logo -->
+        <div>
+          <img class="w-44" src="./assets/images/logo.svg" alt="Logo" />
         </div>
+        <!-- Units Dropdown -->
+        <div
+          class="flex gap-1.5 items-center justify-center bg-gray-700 px-3 py-2 rounded"
+        >
+          <img src="./assets/images/icon-units.svg" alt="Setting Svg" />
+          <h3 class="font-bold">Units</h3>
+          <img src="./assets/images/icon-dropdown.svg" alt="Dropdown Svg" />
+        </div>
+      </nav>
 
-     </section>
+      <h1 class="text-6xl font-bold text-center my-10 overflow-hidden bg-amber-300">
+        How's the sky looking today?
+      </h1>
 
-     <!-- SECTION-2 -->
-      <section class="my-8">
-        <h2 class="font-bold text-xl mb-5">Daily forecast</h2>
+      <!-- Grid Section -->
+      <section>
+        <!-- Searching container -->
+        <form
+          class="flex flex-col md:flex-row md:items-center md:justify-center gap-4 my-10 md:my-14"
+        >
+          <div
+            class="flex gap-5 items-center px-4 rounded-md bg-gray-700 md:w-[45%]"
+          >
+            <label for="input">
+              <img src="./assets/images/icon-search.svg" alt="Search svg" />
+            </label>
+            <input
+              id="input"
+              class="w-full h-full py-3 text-xl outline-none placeholder:font-semibold"
+              type="text"
+              placeholder="Seach for a place..."
+            />
+          </div>
+          <button
+            id="input-btn"
+            class="w-full h-[52px] md:w-[15%] lg:w-[7%] lg:hover:bg-blue-600 px-4 py-3 rounded-md text-center font-semibold bg-blue-500 active:scale-95 cursor-pointer duration-150"
+          >
+            Search
+          </button>
+        </form>
 
-        <!-- Grid-1 -->
-         <div class="h-[65vh] grid grid-cols-3 grid-rows-3' gap-4">
+        <!-- All Grid structures here 👇 -->
 
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
-          <div class="w-full h-full rounded-xl bg-gray-700"></div>
+        <div class="md:grid md:grid-cols-3 gap-6">
+          <div class="col-start-1 col-end-3">
+            <!-- Current Weather -->
+            <div class="w-full h-[70svh] md:h-[55vh] grid grid-cols-2 grid-rows-4 gap-4 md:grid-cols-4 md:grid-rows-3">
+              <div
+                id="weather-today"
+                class="row-start-1 row-end-3 col-start-1 col-end-3 md:col-end-5 rounded-xl overflow-hidden flex flex-col gap-6 items-center justify-center md:flex-row md:justify-between p-6"
+              >
+                <div class="flex flex-col items-center justify-center gap-3">
+                  <h2 id="current_weather_city" class="text-3xl font-semibold">Berlin, Germany</h2>
+                  <h2 id="date" class="font-semibold text-md text-gray-300">
+                    Tuesday, July 21, 2026
+                  </h2>
+                </div>
 
-         </div>
+                <div class="flex gap-10 md:gap-7 items-center justify-center">
+                  <img
+                    id="current_weather_img"
+                    class="w-32 md:w-28"
+                    src="./assets/images/icon-sunny.webp"
+                    alt="sunny svg"
+                  />
+                  <h2 id="current_weather_temp" class="text-8xl font-semibold italic">68°</h2>
+                </div>
+              </div>
+              <div
+                class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
+              >
+                <h2 class="text-xl text-gray-300 font-semibold">Feels Like</h2>
+                <h2 id="feels_like_temp" class="text-4xl">64°</h2>
+              </div>
+              <div
+                class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
+              >
+                <h2 class="text-xl text-gray-300 font-semibold">Humidity</h2>
+                <h2 id="humidity_temp" class="text-4xl">46%</h2>
+              </div>
+              <div
+                class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
+              >
+                <h2 class="text-xl text-gray-300 font-semibold">Wind</h2>
+                <h2 id="wind_speed" class="text-4xl">9 mph</h2>
+              </div>
+              <div
+                class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
+              >
+                <h2 class="text-xl text-gray-300 font-semibold">Precipitation</h2>
+                <h2 id="precipitation" class="text-4xl">0 in</h2>
+              </div>
+            </div>
+
+            <!-- Daily Forecast -->
+            <div class="my-8">
+              <h2 class="font-bold text-xl mb-5">Daily forecast</h2>
+              <div class=" grid grid-cols-3 grid-rows-3 gap-4 md:grid-rows-1 md:grid-cols-7 shrink">
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Tue</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-rain.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+      
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Wed</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-storm.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+      
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Thu</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-sunny.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+      
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Fri</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-partly-cloudy.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+      
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Sat</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-snow.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+      
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Sun</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-overcast.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+      
+                <div
+                  class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
+                >
+                  <h2 class="font-semibold text-xl opacity-85">Mon</h2>
+                  <img
+                    class="w-16"
+                    src="./assets/images/icon-fog.webp"
+                    alt="Rainy svg"
+                  />
+                  <h2 class="w-full flex items-center justify-between font-semibold">
+                    <span class="opacity-85">68°</span>
+                    <span class="opacity-60">57°</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hourly Forecast -->
+          <div>
+            <div
+              class="h-[85svh] w-full md:h-[84svh] lg:h-[85.7vh] grid grid-cols-1 grid-rows-9 p-3.5 gap-4 rounded-2xl bg-gray-800"
+            >
+              <div class="w-full h-full flex items-center justify-between">
+                <h2 class="text-xl font-semibold">Hourly forecast</h2>
+                <select
+                  name="day"
+                  class="bg-gray-600 px-4 py-2 rounded-md font-semibold opacity-70"
+                >
+                  <option value="tuesday">Tuesday</option>
+                  <option value="wednesday">Wednesday</option>
+                  <option value="thursday">Thursday</option>
+                  <option value="friday" selected>Friday</option>
+                  <option value="saturday">Saturday</option>
+                  <option value="sunday">Sunday</option>
+                  <option value="monday">Monday</option>
+                </select>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img
+                    class="w-12"
+                    src="./assets/images/icon-partly-cloudy.webp"
+                    alt=""
+                  />
+                  <h2 class="font-semibold text-2xl">3 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">68°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img class="w-12" src="./assets/images/icon-sunny.webp" alt="" />
+                  <h2 class="font-semibold text-2xl">4 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">68°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img
+                    class="w-12"
+                    src="./assets/images/icon-overcast.webp"
+                    alt=""
+                  />
+                  <h2 class="font-semibold text-2xl">5 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">68°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img class="w-12" src="./assets/images/icon-storm.webp" alt="" />
+                  <h2 class="font-semibold text-2xl">6 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">66°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img class="w-12" src="./assets/images/icon-snow.webp" alt="" />
+                  <h2 class="font-semibold text-2xl">7 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">66°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img class="w-12" src="./assets/images/icon-rain.webp" alt="" />
+                  <h2 class="font-semibold text-2xl">8 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">64°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img class="w-12" src="./assets/images/icon-fog.webp" alt="" />
+                  <h2 class="font-semibold text-2xl">9 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
+              </div>
+    
+              <div
+                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
+              >
+                <div class="flex items-center gap-4">
+                  <img
+                    class="w-12"
+                    src="./assets/images/icon-overcast.webp"
+                    alt=""
+                  />
+                  <h2 class="font-semibold text-2xl">10 PM</h2>
+                </div>
+                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-
-      <!-- SECTION-3 -->
-       <section>
-        <div class="h-[85svh] grid grid-cols-1 grid-rows-9 p-3.5 gap-4 rounded-2xl bg-gray-700">
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-          <div class="w-full h-full bg-gray-600 rounded-xl"></div>
-        </div>
-       </section>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
