@@ -17,7 +17,7 @@ function animation() {
     gsap.from('h1 span', {
         y: 120,
         opacity: 0, 
-        delay: 1,
+        delay: 0.5,
         duration: 0.5,
         stagger: 0.02
     })
