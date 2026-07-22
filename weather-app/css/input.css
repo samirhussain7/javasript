@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+
+@media (max-width: 640px) {
+    #weather-today {
+        background-image: url(../assets/images/bg-today-small.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+@media (min-width: 640px) {
+    #weather-today {
+        background-image: url(../assets/images/bg-today-large.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
