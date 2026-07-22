@@ -1,0 +1,26 @@
+
+function animation() {
+    const h1 = document.querySelector('h1')
+    const text = h1.textContent.trim();
+    const sp = text.split('').map((char) => {
+        if(char == ' ') {
+            return " ";
+        }
+        return `<span>${char}</span>`
+    }).join("")
+    
+    h1.innerHTML = sp
+    const span = document.querySelectorAll('h1 span')
+    span.forEach((elem) => elem.style.display = 'inline-block')
+    
+    
+    gsap.from('h1 span', {
+        y: 120,
+        opacity: 0, 
+        delay: 1,
+        duration: 0.5,
+        stagger: 0.02
+    })
+}
+
+export default animation;
