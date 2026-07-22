@@ -3,6 +3,9 @@ animation()
 
 const input = document.querySelector('input')
 const btn = document.getElementById('input-btn')
+console.log(input.value);
+
+// Elements
 const current_weather_temp = document.getElementById('current_weather_temp')
 const current_weather_img = document.getElementById('current_weather_img')
 const current_weather_date = document.getElementById('date')
@@ -20,10 +23,18 @@ const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  
+  const cityName = input.value.trim();
+  if (cityName !== "") {
+    console.log(cityName)
+    
+  } else {
+    alert("Please enter a city name!");
+  }
   form.reset();
 });
 
-async function getData() {
+async function getWeatherData() {
   try {
     const response = await fetch(
       "https://api.open-meteo.com/v1/forecast?latitude=28.6139&longitude=77.2090&current_weather=true",
@@ -35,12 +46,16 @@ async function getData() {
 
     const data = await response.json();
     console.log(data);
+    current_weather_temp.textContent = `${Math.round(data.current_weather.temperature)}°C`
   } catch (error) {
     console.error(error);
   }
+
+
+  
 }
 
-getData();
+getWeatherData();
 
 // Location Tracker
 function getLocation() {
