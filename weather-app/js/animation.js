@@ -1,5 +1,7 @@
 
 function animation() {
+    gsap.registerPlugin(ScrollTrigger);
+
     const h1 = document.querySelector('h1')
     const text = h1.textContent.trim();
     const sp = text.split('').map((char) => {
@@ -33,6 +35,20 @@ function animation() {
         stagger: 0.02
     })
 
+    gsap.from('form', {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+        delay: 1,
+    })
+
+    gsap.from('section>div', {
+        scale: 0,
+        opacity: 0,
+        delay: 1,
+        duration: 1.4,
+        stagger: 0.1,
+    })
 
 }
 
