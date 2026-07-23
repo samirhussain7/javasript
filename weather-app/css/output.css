@@ -334,9 +334,6 @@
   .max-w-\[1340px\] {
     max-width: 1340px;
   }
-  .min-w-\[304px\] {
-    min-width: 304px;
-  }
   .min-w-\[364px\] {
     min-width: 364px;
   }
@@ -360,17 +357,6 @@
   }
   .resize {
     resize: both;
-  }
-  .scrollbar-thin {
-    scrollbar-width: thin;
-  }
-  .scrollbar-thumb-gray-600 {
-    --tw-scrollbar-thumb: var(--color-gray-600);
-    scrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);
-  }
-  .scrollbar-track-gray-700 {
-    --tw-scrollbar-track: var(--color-gray-700);
-    scrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -399,6 +385,9 @@
   .justify-center {
     justify-content: center;
   }
+  .justify-end {
+    justify-content: flex-end;
+  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -419,9 +408,6 @@
   }
   .overflow-hidden {
     overflow: hidden;
-  }
-  .overflow-y-scroll {
-    overflow-y: scroll;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -468,9 +454,6 @@
   }
   .p-5 {
     padding: calc(var(--spacing) * 5);
-  }
-  .p-10 {
-    padding: calc(var(--spacing) * 10);
   }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
@@ -728,16 +711,6 @@
     background-repeat: no-repeat;
   }
 }
-@property --tw-scrollbar-thumb {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: #0000;
-}
-@property --tw-scrollbar-track {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: #0000;
-}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -892,8 +865,6 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-scrollbar-thumb: #0000;
-      --tw-scrollbar-track: #0000;
       --tw-border-style: solid;
       --tw-font-weight: initial;
       --tw-shadow: 0 0 #0000;
