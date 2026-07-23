@@ -11,54 +11,82 @@
     />
     <title>Frontend Mentor | Weather app</title>
     <link rel="stylesheet" href="./css/output.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"
+      defer
+    ></script>
     <script src="./js/script.js" type="module" defer></script>
   </head>
   <body class="bg-[hsl(243,96%,9%)] text-white">
     <main
-      class="w-full p-10 pt-0 max-w-[1340px] min-w-[404px] min-h-screen mx-auto lg:p-0"
+      class="min-w-[404px] w-full p-10 pt-0 max-w-[1340px] min-h-screen mx-auto lg:px-2 flex flex-col items-center"
     >
-      <nav class="py-5 flex justify-between items-center">
+      <nav class="w-full py-5 flex justify-between items-center">
         <!-- Logo -->
         <div>
-          <img class="w-44 select-none" src="./assets/images/logo.svg" alt="Logo" />
+          <img
+            class="w-44 select-none"
+            src="./assets/images/logo.svg"
+            alt="Logo"
+          />
         </div>
         <!-- Units Dropdown -->
         <div
-          class="flex gap-1.5 items-center justify-center bg-gray-700 px-3 py-2 rounded"
+          class="flex gap-2 items-center justify-center bg-gray-700 px-3 py-2 rounded-md border border-gray-600"
         >
-          <img class="select-none" src="./assets/images/icon-units.svg" alt="Setting Svg" />
-          <h3 class="font-bold">Units</h3>
-          <img class="select-none" src="./assets/images/icon-dropdown.svg" alt="Dropdown Svg" />
+          <img
+            class="select-none w-5 h-5"
+            src="./assets/images/icon-units.svg"
+            alt="Setting Icon"
+          />
+          <select
+            id="unit-selector"
+            class="bg-transparent font-bold text-white outline-none cursor-pointer"
+          >
+            <option value="metric" class="bg-gray-800 text-white">
+              Celsius (°C)
+            </option>
+            <option value="imperial" class="bg-gray-800 text-white">
+              Fahrenheit (°F)
+            </option>
+          </select>
         </div>
       </nav>
 
-      <h1 class="text-6xl p-5 font-bold text-center my-10 overflow-hidden">
+      <h1
+        class="min-w-[364px] text-6xl p-5 font-bold text-center my-3 mt-12 overflow-hidden"
+      >
         How's the sky looking today?
       </h1>
 
       <!-- Grid Section -->
-      <section>
+      <section class="w-full">
         <!-- Searching container -->
-        <form
-          class="flex flex-col md:flex-row md:items-center md:justify-center gap-4 my-10 md:my-14"
-        >
-          <div
-            class="flex gap-5 items-center px-4 rounded-md bg-gray-700 md:w-[45%]"
-          >
-            <label for="input">
-              <img src="./assets/images/icon-search.svg" alt="Search svg" />
-            </label>
-            <input
-              id="input"
-              class="w-full h-full py-3 text-xl outline-none placeholder:font-semibold"
-              type="text"
-              placeholder="Seach for a place..."
-            />
+        <form class="grid grid-cols-3 gap-4 my-10 mb-7 md:my-14 md:mb-8">
+          <div class="col-span-2">
+            <div
+              class="flex gap-5 items-center justify-self-end px-4 h-full rounded-md bg-gray-700 md:w-[75%] lg:w-[65%] relative"
+            >
+              <!-- error message -->
+              <p
+                id="error-message"
+                class="text-red-500 absolute -top-6 lg:top-3 right-2"
+              ></p>
+
+              <label for="input">
+                <img class="select-none" src="./assets/images/icon-search.svg" alt="Search svg" />
+              </label>
+              <input
+                id="input"
+                class="w-full h-full py-3 text-xl bg-transparent outline-none placeholder:font-semibold"
+                type="text"
+                placeholder="Seach for a place..."
+              />
+            </div>
           </div>
           <button
             id="input-btn"
-            class="w-full h-[52px] md:w-[15%] lg:w-[7%] lg:hover:bg-blue-600 px-4 py-3 rounded-md text-center font-semibold bg-blue-500 active:scale-95 cursor-pointer duration-150"
+            class="w-full h-[52px] md:w-[50%] lg:w-[23%] lg:hover:bg-blue-600 px-4 py-3 rounded-md text-center font-semibold bg-blue-500 active:scale-95 cursor-pointer duration-150"
           >
             Search
           </button>
@@ -69,58 +97,71 @@
         <div class="md:grid md:grid-cols-3 gap-6">
           <div class="col-start-1 col-end-3">
             <!-- Current Weather -->
-            <div class="w-full h-[70svh] md:h-[55vh] grid grid-cols-2 grid-rows-4 gap-4 md:grid-cols-4 md:grid-rows-3">
+            <div
+              class="w-full h-[70svh] md:h-[55vh] grid grid-cols-2 grid-rows-4 gap-4 md:grid-cols-4 md:grid-rows-3"
+            >
               <div
                 id="weather-today"
-                class="row-start-1 row-end-3 col-start-1 col-end-3 md:col-end-5 rounded-xl overflow-hidden flex flex-col gap-6 items-center justify-center md:flex-row md:justify-between p-6"
+                class="row-start-1 row-end-3 col-start-1 col-end-3 md:col-end-5 rounded-xl overflow-hidden flex flex-col md:gap-6 items-center justify-center md:flex-row md:justify-between md:p-6"
               >
                 <div class="flex flex-col items-center justify-center gap-3">
-                  <h2 id="current_weather_city" class="text-3xl font-semibold">Delhi, India</h2>
+                  <h2 id="current_weather_city" class="text-3xl font-semibold">
+                    Delhi, India
+                  </h2>
                   <h2 id="date" class="font-semibold text-md text-gray-300">
                     Tuesday, July 21, 2026
                   </h2>
                 </div>
 
-                <div class="flex gap-10 md:gap-7 items-center justify-center">
+                <div
+                  class="flex gap-5 md:gap-10 md:gap-7 items-center justify-center"
+                >
                   <img
                     id="current_weather_img"
                     class="w-32 md:w-28 select-none"
                     src="./assets/images/icon-sunny.webp"
                     alt="sunny svg"
                   />
-                  <h2 id="current_weather_temp" class="text-8xl font-semibold italic">68°</h2>
+                  <h2
+                    id="current_weather_temp"
+                    class="text-6xl md:text-8xl font-semibold italic"
+                  >
+                    68°C
+                  </h2>
                 </div>
               </div>
               <div
                 class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
               >
                 <h2 class="text-xl text-gray-300 font-semibold">Feels Like</h2>
-                <h2 id="feels_like_temp" class="text-4xl">64°</h2>
+                <h2 id="feels_like_temp" class="text-2xl md:text-4xl">64°C</h2>
               </div>
               <div
                 class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
               >
                 <h2 class="text-xl text-gray-300 font-semibold">Humidity</h2>
-                <h2 id="humidity_temp" class="text-4xl">46%</h2>
+                <h2 id="humidity" class="text-2xl md:text-4xl">46%</h2>
               </div>
               <div
                 class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
               >
                 <h2 class="text-xl text-gray-300 font-semibold">Wind</h2>
-                <h2 id="wind_speed" class="text-4xl">9 mph</h2>
+                <h2 id="wind_speed" class="text-2xl md:text-4xl">9 mph</h2>
               </div>
               <div
                 class="w-full h-full px-4 py-6 bg-gray-800 rounded-xl flex flex-col justify-between border border-gray-600"
               >
-                <h2 class="text-xl text-gray-300 font-semibold">Precipitation</h2>
-                <h2 id="precipitation" class="text-4xl">0 in</h2>
+                <h2 class="text-xl text-gray-300 font-semibold">Pressure</h2>
+                <h2 id="description" class="text-2xl md:text-4xl">0000</h2>
               </div>
             </div>
 
             <!-- Daily Forecast -->
-            <div class="my-8">
+            <div class="my-8" id="daily-forecast">
               <h2 class="font-bold text-xl mb-5">Daily forecast</h2>
-              <div class=" grid grid-cols-3 grid-rows-3 gap-4 md:grid-rows-1 md:grid-cols-7 shrink">
+              <div
+                class="grid grid-cols-3 grid-rows-3 gap-4 md:grid-rows-1 md:grid-cols-7 shrink"
+              >
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -130,12 +171,14 @@
                     src="./assets/images/icon-rain.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
-      
+
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -145,12 +188,14 @@
                     src="./assets/images/icon-storm.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
-      
+
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -160,12 +205,14 @@
                     src="./assets/images/icon-sunny.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
-      
+
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -175,12 +222,14 @@
                     src="./assets/images/icon-partly-cloudy.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
-      
+
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -190,12 +239,14 @@
                     src="./assets/images/icon-snow.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
-      
+
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -205,12 +256,14 @@
                     src="./assets/images/icon-overcast.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
-      
+
                 <div
                   class="w-full h-full p-3 rounded-xl bg-gray-800 border border-gray-600 flex flex-col items-center justify-center gap-4"
                 >
@@ -220,9 +273,11 @@
                     src="./assets/images/icon-fog.webp"
                     alt="Rainy svg"
                   />
-                  <h2 class="w-full flex items-center justify-between font-semibold">
-                    <span class="opacity-85">68°</span>
-                    <span class="opacity-60">57°</span>
+                  <h2
+                    class="w-full flex items-center justify-between font-semibold"
+                  >
+                    <span class="opacity-85">68°C</span>
+                    <span class="opacity-60">57°C</span>
                   </h2>
                 </div>
               </div>
@@ -232,7 +287,8 @@
           <!-- Hourly Forecast -->
           <div>
             <div
-              class="h-[85svh] w-full max-h-[86vh] md:h-[84svh] lg:h-[85.7vh] flex flex-col overflow-y-scroll p-3.5 gap-4 rounded-2xl bg-gray-800"
+              id="hourly-forecast"
+              class="h-[85svh] w-full max-h-[86vh] md:h-[84svh] lg:h-[85.7vh] flex flex-col justify-center p-3.5 gap-4 rounded-2xl bg-gray-800"
             >
               <div class="w-full h-full flex items-center justify-between">
                 <h2 class="text-xl font-semibold">Hourly forecast</h2>
@@ -249,7 +305,7 @@
                   <option value="monday">Monday</option>
                 </select>
               </div>
-    
+
               <div
                 class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
               >
@@ -263,7 +319,7 @@
                 </div>
                 <h2 class="font-semibold opacity-70 text-lg">68°</h2>
               </div>
-    
+
               <div
                 class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
               >
@@ -277,17 +333,21 @@
                 </div>
                 <h2 class="font-semibold opacity-70 text-lg">68°</h2>
               </div>
-    
+
               <div
                 class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
               >
                 <div class="flex items-center gap-4">
-                  <img class="w-12 select-none" src="./assets/images/icon-sunny.webp" alt="" />
+                  <img
+                    class="w-12 select-none"
+                    src="./assets/images/icon-sunny.webp"
+                    alt=""
+                  />
                   <h2 class="font-semibold text-2xl">4 PM</h2>
                 </div>
                 <h2 class="font-semibold opacity-70 text-lg">68°</h2>
               </div>
-    
+
               <div
                 class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
               >
@@ -301,120 +361,48 @@
                 </div>
                 <h2 class="font-semibold opacity-70 text-lg">68°</h2>
               </div>
-    
+
               <div
                 class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
               >
                 <div class="flex items-center gap-4">
-                  <img class="w-12 select-none" src="./assets/images/icon-storm.webp" alt="" />
+                  <img
+                    class="w-12 select-none"
+                    src="./assets/images/icon-storm.webp"
+                    alt=""
+                  />
                   <h2 class="font-semibold text-2xl">6 PM</h2>
                 </div>
                 <h2 class="font-semibold opacity-70 text-lg">66°</h2>
               </div>
-    
+
               <div
                 class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
               >
                 <div class="flex items-center gap-4">
-                  <img class="w-12 select-none" src="./assets/images/icon-snow.webp" alt="" />
+                  <img
+                    class="w-12 select-none"
+                    src="./assets/images/icon-snow.webp"
+                    alt=""
+                  />
                   <h2 class="font-semibold text-2xl">7 PM</h2>
                 </div>
                 <h2 class="font-semibold opacity-70 text-lg">66°</h2>
               </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img class="w-12 select-none" src="./assets/images/icon-rain.webp" alt="" />
-                  <h2 class="font-semibold text-2xl">8 PM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">64°</h2>
-              </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img class="w-12 select-none" src="./assets/images/icon-fog.webp" alt="" />
-                  <h2 class="font-semibold text-2xl">9 PM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
-              </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img
-                    class="w-12 select-none"
-                    src="./assets/images/icon-overcast.webp"
-                    alt=""
-                  />
-                  <h2 class="font-semibold text-2xl">10 PM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
-              </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img
-                    class="w-12 select-none"
-                    src="./assets/images/icon-overcast.webp"
-                    alt=""
-                  />
-                  <h2 class="font-semibold text-2xl">11 PM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
-              </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img
-                    class="w-12 select-none"
-                    src="./assets/images/icon-overcast.webp"
-                    alt=""
-                  />
-                  <h2 class="font-semibold text-2xl">12 AM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
-              </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img
-                    class="w-12"
-                    src="./assets/images/icon-overcast.webp"
-                    alt=""
-                  />
-                  <h2 class="font-semibold text-2xl">01 AM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
-              </div>
-    
-              <div
-                class="w-full h-full p-3 pr-4 bg-gray-700 rounded-xl flex items-center justify-between"
-              >
-                <div class="flex items-center gap-4">
-                  <img
-                    class="w-12 select-none"
-                    src="./assets/images/icon-overcast.webp"
-                    alt=""
-                  />
-                  <h2 class="font-semibold text-2xl">02 AM</h2>
-                </div>
-                <h2 class="font-semibold opacity-70 text-lg">63°</h2>
-              </div>
+
+              
             </div>
           </div>
         </div>
       </section>
+
+      <footer class="w-full py-5 text-center text-gray-500">
+        &copy; 2026 Weather App. All rights reserved. by Samir Dev
+      </footer>
     </main>
+
+    <div
+      class="blur absolute z-10 shadow-pink-600 shadow-2xl top-7 left-6"
+    ></div>
   </body>
 </html>
