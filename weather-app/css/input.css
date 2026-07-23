@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer base {
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+}
+
 
 @media (max-width: 640px) {
     #weather-today {
