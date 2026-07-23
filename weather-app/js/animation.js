@@ -1,6 +1,5 @@
 
 function animation() {
-    gsap.registerPlugin(ScrollTrigger);
 
     const h1 = document.querySelector('h1')
     const text = h1.textContent.trim();
