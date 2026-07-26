@@ -1,4 +1,3 @@
-const triggerBtn = document.querySelector(".arrow");
 const form = document.querySelector("form");
 const dayInput = document.querySelector("#day");
 const dayLabel = document.querySelector(".day label");
@@ -10,7 +9,8 @@ const yearInput = document.querySelector("#year");
 const yearLabel = document.querySelector(".year label");
 const output_box = document.querySelector(".output-box");
 
-triggerBtn.addEventListener("click", () => {
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
   const dayVal = Number(dayInput.value);
   const monthVal = Number(monthInput.value);
@@ -33,28 +33,34 @@ triggerBtn.addEventListener("click", () => {
   // Day checking
   if (dayVal == "" || dayVal > 31 || dayVal < 1) {
     dayInput.classList.add("err-border");
+    dayInput.classList.add("vibrate");
     dayLabel.classList.add("text-red");
     return;
   } else {
     dayInput.classList.remove("err-border");
+    dayInput.classList.remove("vibrate");
     dayLabel.classList.remove("text-red");
   }
   // Month checking
   if (monthVal == "" || monthVal < 1 || monthVal > 12) {
     monthInput.classList.add("err-border");
+    monthInput.classList.add("vibrate");
     monthLabel.classList.add("text-red");
     return;
   } else {
     monthInput.classList.remove("err-border");
+    monthInput.classList.remove("vibrate");
     monthLabel.classList.remove("text-red");
   }
   // Year checking
   if (yearVal == "" || yearVal < 1 || yearVal > currentYear) {
     yearInput.classList.add("err-border");
+    yearInput.classList.add("vibrate");
     yearLabel.classList.add("text-red");
     return;
   } else {
     yearInput.classList.remove("err-border");
+    yearInput.classList.remove("vibrate");
     yearLabel.classList.remove("text-red");
   }
 
