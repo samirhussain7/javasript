@@ -104,6 +104,17 @@ main {
     font-weight: 600;
     border-radius: 5px;
 }
+
+.vibrate {
+    animation: vibrate 0.2s alternate 0s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    40% { transform: translateX(-10px); }
+    60% { transform: translateX(10px); }
+    80% { transform: translateX(-10px); }
+    100% { transform: translateX(0px); }
+}
 input::placeholder {
     user-select: none;
 }
