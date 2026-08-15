@@ -1,4 +1,4 @@
-// IIFE
+// To safe variable from global scope, we can use IIFE (Immediately Invoked Function Expression) to wrap our code in a function and call it immediately. This way, all the variables defined inside the function will not be accessible from the global scope.
 (function(){
 
     const btn = document.querySelector('.btn')
