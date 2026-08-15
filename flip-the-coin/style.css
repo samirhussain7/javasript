@@ -60,3 +60,11 @@ h2 {
 
 .btn:hover { background-color: rgb(15, 130, 245); }
 .btn:active { transform: scale(0.95); }
+
+
+.coin {
+    transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+.coin.flip {
+    transform: rotateY(720deg);
+}
