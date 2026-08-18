@@ -1,0 +1,24 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "This directory is for whatever i design with js, i'll push on this repo.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samirhussain7/javasript.git"
+  },
+  "keywords": [],
+  "author": "SAMIR ✋",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/samirhussain7/javasript/issues"
+  },
+  "homepage": "https://github.com/samirhussain7/javasript#readme"
+}
