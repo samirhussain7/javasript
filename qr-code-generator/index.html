@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,20 +9,37 @@
       type="image/x-icon"
       sizes="96x96"
     />
-    <title>QR code generator | devChallenges.io</title>
-    <link rel="stylesheet" href="style.css">
+    <title>QR code generator | 404Dev</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-      <main>
-        <div class="container">
+    <main>
+      <div class="container">
+        <div class="input-container">
           <div class="logo">
-            <img src="./resources/Logo.svg" alt="Logo">
+            <img src="./resources/Logo.svg" alt="Logo" />
           </div>
-          <form class="input">
-            <input type="url" placeholder="Enter an url">
+          <div class="input">
+            <input type="url" placeholder="Enter an url" name="input" />
             <button class="btn">QR code</button>
-          </form>
+          </div>
         </div>
-      </main>
+
+        <div class="output-container" hidden>
+          <img src="./resources/Logo.svg" alt="QR LOGO" />
+          <div class="qr-container">
+            <div class="qr-bg">
+              <img class="qr-code" src="" alt="" />
+            </div>
+          </div>
+          <div class="btns">
+            <a class="download" href="">Download</a>
+            <button class="share">Share</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
