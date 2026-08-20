@@ -23,6 +23,14 @@ body {
     gap: 30px;
     height: 100vh;
 }
+
+.input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 .input {
     padding: 5px;
     width: 95%;
@@ -59,6 +67,7 @@ body {
     font-weight: 600;
     background-color: rgb(58, 58, 231);
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color 0.2s ease-out;
 
     &:hover {
@@ -68,4 +77,65 @@ body {
     &:active {
         transform: scale(0.97);
     }
+}
+
+
+
+.output-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    display: none;
+}
+
+.output-container>img {
+    width: 90px;
+}
+
+.qr-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #ffffff2c;
+    position: relative;
+}
+
+.qr-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+
+    width: 77%;
+    height: 77%;
+    border-radius: 17px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.qr-bg img {
+    width: 80%;
+}
+
+
+.download, .share {
+    padding: 13px 35px;
+    text-decoration: none;
+    background-color: blue;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-inline: 10px;
+
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.download:hover, .share:hover {
+    background-color: rgb(9, 9, 215);
 }
