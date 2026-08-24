@@ -133,7 +133,7 @@ body {
     margin-inline: 10px;
 
     cursor: pointer;
-    transition: all 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
 }
 
 .download:hover, .share:hover {
